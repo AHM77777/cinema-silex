@@ -1,5 +1,19 @@
 {
-    "require": {
-        "silex/silex": "^2.0"
-    }
+	"name" : "cinema-silex",
+	"description" : "Cinema management application",
+	"version" : "0.0.1",
+	"type" : "project",
+	"authors" : [
+		{
+			"name" : "Antonio Hernandez",
+			"email" : "antonio_hernandez96@hotmail.com",
+			"role" : "Developer"
+		}
+	],
+	"require": {
+		"twig/twig" : "^1.0",
+		"silex/silex": "^1.3",
+		"monolog/monolog" : "^1.14",
+		"doctrine/dbal" : "~2.2"
+	}
 }
