@@ -1,0 +1,19 @@
+19/04/2017
+1.- For some reason, after adding two .htaccess files to my silex folders (one on the base folder and other inside 'web'), it worked, though the routes were not resolving properly.
+
+2.- I tweaked around the program a little more and the routes worked with just an .htaccess file on the web folder. This left me with the problem of cutting the path to 'localhost' only.
+
+3.- To trim the path I prepare a VirtualHost that pointed to my project web folder, and added a Redirect directive on the .htaccess file. This allowed me to use localhost as the base path for accessing my site.
+The virtual host was prepared on /xampp/apache/conf/extra/httpd-vhosts.conf, it has the following config:
+    <VirtualHost *:80>
+        ServerName cinema-silex
+        DocumentRoot "C:/xampp/htdocs/cinema-silex/web"
+        SetEnv APPLICATION_ENV "development"
+        <Directory "C:/xampp/htdocs/cinema-silex/web">
+            DirectoryIndex index.php
+            AllowOverride All
+            Order allow,deny
+            Allow from all
+        </Directory>
+    </VirtualHost>
+The line added to my .htaccess was the following: RedirectMatch permanent ^/app\.php/(.*) /$1
